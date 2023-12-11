@@ -7,10 +7,12 @@ import { useState } from "react";
 function NewsCard({ article }) {
     return (
         <>
+            <div>
+                <img id='football' src={article.article_img_url} alt="Football Image"/>
+            </div>
             <article className='news-card'>
                 <h3 id='news-title'>{article.title}</h3>
                 <p id='news-paragraph'>{article.body}</p>
-                {/* <img id='football' src={article.article_img_url} alt="Football Image"/> */}
                 <button>Read More</button>
             </article>
         </>
