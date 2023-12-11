@@ -1,6 +1,13 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function NewsCard({ article }) {
+function NewsCard({ article, setArticle }) {
+
+    function openArticlePage(article) {
+        console.log(article)
+        setArticle(article)
+    }
+
   return (
     <>
       <article className='news-card'>
@@ -10,7 +17,9 @@ function NewsCard({ article }) {
         <div>
           <h3 id='news-title'>{article.title}</h3>
           <p id='news-paragraph'>{article.body}</p>
-          <button>Read More</button>
+          <Link to={`/article/${article.article_id}`}>
+            <button onClick={() => openArticlePage(article)}>Read More</button>
+          </Link>
         </div>
       </article>
     </>

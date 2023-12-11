@@ -4,4 +4,9 @@ import App from './App.jsx'
 import { BrowserRouter } from "react-router-dom";
 // import { UserProvider } from "./contexts/User.jsx";
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+
+)

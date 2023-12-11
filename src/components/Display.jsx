@@ -1,9 +1,13 @@
+import { Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import NewsCard from "./NewsCard";
+import ArticlesList from "./ArticlesList";
+import ArticleDisplay from "./ArticleDisplay";
 import { fetchAllArticles } from "../api";
 
 function Display({ topicFilter }) {
   const [articles, setArticles] = useState([]);
+  const [article, setArticle] = useState([]);
 
   useEffect(() => {
     fetchAllArticles(topicFilter).then((foundArticles) => {
@@ -13,13 +17,18 @@ function Display({ topicFilter }) {
   }, [topicFilter]);
 
   return (
-    <>
-      <div className='display'>
-        {articles.map((article) => {
-          return <NewsCard key={article.article_id} article={article}/>;
-        })}
-      </div>
-    </>
+    <main>
+      <Routes>
+        <Route
+            path="/"
+            element={<ArticlesList articles={articles} setArticle={setArticle}/>}
+        />
+        <Route
+            path="/articles/:article_id"
+            element={<ArticleDisplay articles={articles}/>}
+        />
+      </Routes>
+    </main>
   );
 }
 
