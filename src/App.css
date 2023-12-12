@@ -3,7 +3,6 @@ body {
 }
 
 #root {
-  /* max-width: 1280px; */
   margin: 0;
   padding: 2rem;
   text-align: center;
@@ -22,6 +21,8 @@ body {
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
   font-family:Arial, Helvetica, sans-serif;
   color: white;
   margin: 0;
@@ -45,31 +46,58 @@ body {
 }
 
 .news-card {
-  
+  display: flex; 
   background-color: white;
-  height: 20vh;
   margin: 10px 40px;
 }
 
-#football {
-  display: inline-block;
-  margin-left: 20px;
-  height: 100px;
-  width: 100px;
+#icon {
+  height: 300px;
+  width: 400px;
 }
 
-#news-title {
-  margin: 10px 10px;
-  display: inline-block;
+.picture-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 20px; 
+}
+
+#news-title,
+#news-paragraph {
+  margin: 10px; 
+  text-align: left;
 }
 
 #news-paragraph {
-  margin: 0 20px;
-  /* margin-left: 200px; */
-  text-align: left;
   display: -webkit-box;
-  -webkit-line-clamp: 3; 
+  -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+#icon-2 {
+  margin-top: 2rem;
+  height: 300px;
+  width: 400px;
+}
+
+.article {
+  background-color: brown;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.white-background {
+  margin: 1rem 1rem;
+  background-color: white;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.white-title {
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  background-color: rgb(205, 12, 12);
 }

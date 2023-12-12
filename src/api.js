@@ -11,3 +11,12 @@ export function fetchAllArticles(categoryFilter) {
       return res.data.articles;
     });
 }
+
+export function fetchArticleById(id) {
+  return newsApi
+    .get(`/articles/${id}`)
+    .then((res) => {
+      return res.data.article;
+    });
+}
+

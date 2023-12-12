@@ -1,22 +1,28 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-{/* <header className='display-header'>
-                <h2>Top Headlines:</h2>
-            </header> */}
+function NewsCard({ article, setArticle }) {
 
-function NewsCard({ article }) {
-    return (
-        <>
-            <div>
-                <img id='football' src={article.article_img_url} alt="Football Image"/>
-            </div>
-            <article className='news-card'>
-                <h3 id='news-title'>{article.title}</h3>
-                <p id='news-paragraph'>{article.body}</p>
-                <button>Read More</button>
-            </article>
-        </>
-    );
+    function openArticlePage(article) {
+        setArticle(article)
+    }
+
+  return (
+    <>
+      <article className='news-card'>
+        <div className='picture-icon'>
+          <img id='icon' src={article.article_img_url} alt={`${article.topic} image`} />
+        </div>
+        <div>
+          <h3 id='news-title'>{article.title}</h3>
+          <p id='news-paragraph'>{article.body}</p>
+          <Link to={`/articles/${article.article_id}`}>
+            <button onClick={() => openArticlePage(article)}>Read More</button>
+          </Link>
+        </div>
+      </article>
+    </>
+  );
 }
 
 export default NewsCard;
