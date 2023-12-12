@@ -4,21 +4,29 @@ import { fetchAllArticles } from "../api";
 
 function Display({ topicFilter }) {
   const [articles, setArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    fetchAllArticles(topicFilter).then((foundArticles) => {
-      console.log(foundArticles)
+    fetchAllArticles(topicFilter)
+    .then((foundArticles) => {
       setArticles(foundArticles);
-    });
+    })
+    .finally(() => {
+      setIsLoading(false)
+    })
   }, [topicFilter]);
 
   return (
     <>
-      <div className='display'>
-        {articles.map((article) => {
-          return <NewsCard key={article.article_id} article={article}/>;
-        })}
-      </div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className='display'>
+          {articles.map((article) => (
+            <NewsCard key={article.article_id} article={article} />
+          ))}
+        </div>
+      )}
     </>
   );
 }
