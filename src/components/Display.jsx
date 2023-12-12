@@ -11,7 +11,6 @@ function Display({ topicFilter }) {
 
   useEffect(() => {
     fetchAllArticles(topicFilter).then((foundArticles) => {
-      console.log(foundArticles)
       setArticles(foundArticles);
     });
   }, [topicFilter]);
@@ -25,7 +24,7 @@ function Display({ topicFilter }) {
         />
         <Route
             path="/articles/:article_id"
-            element={<ArticleDisplay articles={articles}/>}
+            element={<ArticleDisplay article={article}/>}
         />
       </Routes>
     </main>

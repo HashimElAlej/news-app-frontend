@@ -17,7 +17,7 @@ function NewsCard({ article, setArticle }) {
         <div>
           <h3 id='news-title'>{article.title}</h3>
           <p id='news-paragraph'>{article.body}</p>
-          <Link to={`/article/${article.article_id}`}>
+          <Link to={`/articles/${article.article_id}`}>
             <button onClick={() => openArticlePage(article)}>Read More</button>
           </Link>
         </div>
