@@ -1,9 +1,17 @@
 import { fetchArticleById } from "../api";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-function ArticleDisplay({ article }) {
 
+function ArticleDisplay({ article, setArticle }) {
+  const { article_id } = useParams();
   
+  useEffect(() => {
+    fetchArticleById((article_id))
+    .then((data) => {
+      setArticle(data[0])
+    })
+  }, [article_id]);
 
   return (
     <article className='article'>
@@ -28,3 +36,4 @@ function ArticleDisplay({ article }) {
 }
 
 export default ArticleDisplay;
+
