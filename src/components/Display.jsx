@@ -24,7 +24,7 @@ function Display({ topicFilter }) {
         />
         <Route
             path="/articles/:article_id"
-            element={<ArticleDisplay article={article}/>}
+            element={<ArticleDisplay article={article} setArticle={setArticle}/>}
         />
       </Routes>
     </main>

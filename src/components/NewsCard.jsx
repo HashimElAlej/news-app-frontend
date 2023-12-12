@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 function NewsCard({ article, setArticle }) {
 
     function openArticlePage(article) {
-        console.log(article)
         setArticle(article)
     }
 
