@@ -1,4 +1,4 @@
-import { fetchArticleById } from "../api";
+import { fetchArticleById,fetchAllComments } from "../api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CommentsCard from "./CommentCard";
