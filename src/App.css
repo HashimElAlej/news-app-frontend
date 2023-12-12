@@ -47,6 +47,7 @@ body {
 
 .news-card {
   display: flex; 
+  justify-content: center;
   background-color: white;
   margin: 10px 40px;
 }
@@ -100,4 +101,10 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 100%;
   background-color: rgb(205, 12, 12);
+}
+
+.comment-votes {
+  display: flex;
+  gap: 10px;
+  justify-content:center;
 }

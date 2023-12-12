@@ -5,7 +5,6 @@ import CommentsCard from "./CommentCard";
 
 
 function ArticleDisplay({ article, setArticle }) {
-
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
 
@@ -44,7 +43,7 @@ function ArticleDisplay({ article, setArticle }) {
       <div>
         <h3>Comments:</h3>
         {comments.map((comment) => {
-          return <CommentsCard key={comment.comment_id} comment={comment} />
+          return <CommentsCard key={comment.comment_id} comment={comment} article_id={article_id}/>
         })}
       </div>
 

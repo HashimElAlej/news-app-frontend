@@ -25,3 +25,13 @@ export function fetchAllComments(id) {
     return res.data.comments;
   });
 }
+
+export function postVote(article_id,comment_id,{commentVotes}) {
+  return newsApi
+    .patch(`articles/${article_id}/comments/${comment_id}`,{commentVotes})
+    .then((res) => {
+
+      console.log('success')
+      return res.data.comment;
+    });
+}
