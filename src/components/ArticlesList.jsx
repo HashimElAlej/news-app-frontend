@@ -1,5 +1,4 @@
 import NewsCard from "./NewsCard";
-import { useState } from "react";
 
 function ArticlesList({ articles, setArticle}) {
     return (

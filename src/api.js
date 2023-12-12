@@ -12,6 +12,14 @@ export function fetchAllArticles(categoryFilter) {
     });
 }
 
+export function fetchArticleById(id) {
+  return newsApi
+    .get(`/articles/${id}`)
+    .then((res) => {
+      return res.data.article;
+    });
+}
+
 export function fetchAllCategories() {
   return marketplaceApi.get("/categories").then((res) => {
     return res.data.categories;

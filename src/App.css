@@ -21,6 +21,8 @@ body {
 }
 
 .header {
+  display: flex;
+  flex-direction: column;
   font-family:Arial, Helvetica, sans-serif;
   color: white;
   margin: 0;
@@ -62,7 +64,7 @@ body {
 
 #news-title,
 #news-paragraph {
-  margin: 10px; /* Adjust the margin as needed */
+  margin: 10px; 
   text-align: left;
 }
 
@@ -84,11 +86,18 @@ body {
   background-color: brown;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the content vertically */
+  align-items: center; 
 }
 
 .white-background {
   margin: 1rem 1rem;
   background-color: white;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.white-title {
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  background-color: rgb(205, 12, 12);
 }

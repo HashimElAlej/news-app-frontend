@@ -12,7 +12,7 @@ function NewsCard({ article, setArticle }) {
     <>
       <article className='news-card'>
         <div className='picture-icon'>
-          <img id='icon' src={article.article_img_url} alt="Football Image" />
+          <img id='icon' src={article.article_img_url} alt={`${article.topic} image`} />
         </div>
         <div>
           <h3 id='news-title'>{article.title}</h3>
