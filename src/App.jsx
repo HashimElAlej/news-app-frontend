@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import { fetchAllArticles } from './api';
 import Header from './components/Header';
@@ -13,14 +14,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true); // Set loading to true before fetching data
+    setIsLoading(true); 
 
     fetchAllArticles(topicFilter)
       .then((foundArticles) => {
         setArticles(foundArticles);
       })
       .finally(() => {
-        setIsLoading(false); // Set loading to false after fetching data
+        setIsLoading(false); 
       });
   }, [topicFilter]);
 
