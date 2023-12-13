@@ -1,34 +1,56 @@
 import { useState, useEffect } from "react";
-import { postVote } from "../api";
+import { patchVote } from "../api";
 
 
-function CommentsCard({ comment , article_id}) {
-
-    console.log(article_id)
+function CommentsCard({ comment }) {
 
     const [commentVotes, setCommentVotes] = useState(comment.votes);
+    const [toggleVote, setToggleVote] = useState()
+    const [isClickedLike, setIsClickedLike] = useState(false);
+    const [isClickedDislike, setIsClickedDislike] = useState(false);
 
-    useEffect(() => {
-        console.log(article_id)
-        postVote(article_id, comment.comment_id, { commentVotes })
+    function handleLikeComment() {
+        if (toggleVote != 'like') {
+            setIsClickedLike(true)
+            setIsClickedDislike(false)
+            setToggleVote('like')
+            setCommentVotes(commentVotes + 1)
+            const updatedVotes = 1
+            updateCommentVotes(comment.comment_id, updatedVotes);
+        }
+    }
+
+    function handleDislikeComment() {
+        if (toggleVote != 'dislike') {
+            setIsClickedDislike(true)
+            setIsClickedLike(false)
+            setToggleVote('dislike')
+            setCommentVotes(commentVotes - 1)
+            const updatedVotes = -1
+            updateCommentVotes(comment.comment_id, updatedVotes);
+        }
+    }
+
+    const updateCommentVotes = (commentId, updatedVotes) => {
+        patchVote(commentId, updatedVotes )
           .then((data) => {
-            console.log(data);
           })
           .catch((error) => {
             console.error('Error updating comment votes:', error);
           });
-      }, [article_id, comment.comment_id, commentVotes]);
+      };
 
+    const buttonStyleLike = {
+        backgroundColor: isClickedLike ? 'green' : 'white',
+        color: 'white',
+        cursor: 'pointer',
+    };
 
-    function handleLikeComment() {
-        const updatedVotes = commentVotes + 1
-        setCommentVotes(updatedVotes)
-    }
-
-    function handleDislikeComment() {
-        const updatedVotes = commentVotes - 1
-        setCommentVotes(updatedVotes)
-    }
+    const buttonStyleDislike = {
+        backgroundColor: isClickedDislike ? 'green' : 'white',
+        color: 'white',
+        cursor: 'pointer',
+    };
 
     return (
         <>
@@ -36,7 +58,7 @@ function CommentsCard({ comment , article_id}) {
                 <div>
                     <h3 id='box-title'>{comment.author}</h3>
                     <p id='box-paragraph'>{comment.body}</p>
-                    <p className='comment-votes'>Like Post<button onClick={handleLikeComment}>+1</button>Dislike Post<button onClick={handleDislikeComment}>-1</button></p>
+                    <p className='comment-votes'>Like Post<button style={buttonStyleLike} onClick={handleLikeComment}>+1</button>Dislike Post<button style={buttonStyleDislike} onClick={handleDislikeComment}>-1</button></p>
                     <p>Votes: {commentVotes}</p>
                 </div>
             </article>

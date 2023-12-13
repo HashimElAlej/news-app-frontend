@@ -26,12 +26,10 @@ export function fetchAllComments(id) {
   });
 }
 
-export function postVote(article_id,comment_id,{commentVotes}) {
+export function patchVote(comment_id,commentVotes) {
   return newsApi
-    .patch(`articles/${article_id}/comments/${comment_id}`,{commentVotes})
+    .patch(`comments/${comment_id}`,{inc_votes: commentVotes})
     .then((res) => {
-
-      console.log('success')
-      return res.data.comment;
+      return res.data.updatedVotes;
     });
 }
