@@ -20,3 +20,8 @@ export function fetchArticleById(id) {
     });
 }
 
+export function fetchAllComments(id) {
+  return newsApi.get(`/articles/${id}/comments`).then((res) => {
+    return res.data.comments;
+  });
+}

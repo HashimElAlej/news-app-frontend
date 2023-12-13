@@ -31,7 +31,7 @@ function App() {
       <NavBar />
       <main>
         {isLoading ? (
-          <p>Loading...</p> // Display a loading message or spinner
+          <p>Loading...</p> 
         ) : (
           <Routes>
             <Route

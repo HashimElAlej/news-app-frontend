@@ -1,11 +1,21 @@
-import { fetchArticleById } from "../api";
+import { fetchAllComments, fetchArticleById } from "../api";
 import { useState, useEffect } from "react";
+import CommentsCard from "./CommentCard";
 import { useParams } from "react-router-dom";
 
 
 function ArticleDisplay({ article, setArticle }) {
+
   const { article_id } = useParams();
-  
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    fetchAllComments((article_id))
+    .then((data) => {
+      setComments(data)
+    })
+  }, [article_id]);
+
   useEffect(() => {
     fetchArticleById((article_id))
     .then((data) => {
@@ -14,24 +24,21 @@ function ArticleDisplay({ article, setArticle }) {
   }, [article_id]);
 
   return (
-    <article className='article'>
-
-      <div className='white-title'>
-        <h3> {article.title} </h3>
+    <div className='article'>
+      <article>
+        <img id='icon-2' src={article.article_img_url} alt="Football Image" />
+        <div className='white-background'>
+          <h3> {article.title} </h3>
+          <p>{article.body}</p>
+        </div>
+      </article>
+      <div>
+        <h3>Comments:</h3>
+        {comments.map((comment) => {
+          return <CommentsCard key={comment.comment_id} comment={comment}/>
+        })}
       </div>
-
-      <div className='white-background'>
-       <p>Author: {article.author}</p>
-       <p>Date: {article.created_at}</p>
-      </div>
-
-      <img id='icon-2' src={article.article_img_url} alt="Football Image" />
-
-      <div className='white-background'>
-        <p>{article.body}</p>
-      </div>
-
-    </article>
+    </div>
   );
 }
 
